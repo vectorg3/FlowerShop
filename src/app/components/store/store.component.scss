@@ -159,3 +159,11 @@
     }
   }
 }
+@media(max-width: 483px){
+  .product{
+    width: 80%;
+    &__container{
+      padding: 0.5rem;
+    }
+  }
+}
