@@ -1,0 +1,53 @@
+<button class="back" routerLink="/store">Вернуться в магазин...</button>
+<form class="login" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+  <div class="login__title">Вход</div>
+  <div *ngIf="isErrorDisplay" class="request-error">
+    {{ requestError }}
+    <tui-svg
+      src="tuiIconClose"
+      class="error-close"
+      (click)="this.isErrorDisplay = false"
+      >close</tui-svg
+    >
+  </div>
+  <tui-input formControlName="phone">
+    Введите номер телефона
+    <input tuiTextfield type="phone" />
+  </tui-input>
+  <p
+    [class]="
+      this.loginForm.get('phone')?.invalid &&
+      this.loginForm.get('phone')?.touched
+        ? 'input-warning shown'
+        : 'input-warning'
+    "
+  >
+    Номер телефона указан неверно
+  </p>
+  <tui-input formControlName="password">
+    Введите пароль
+    <input tuiTextfield type="password" />
+  </tui-input>
+  <p
+    [class]="
+      this.loginForm.get('password')?.invalid &&
+      this.loginForm.get('password')?.touched
+        ? 'input-warning shown'
+        : 'input-warning'
+    "
+  >
+    8 символов, включая (латинские) заглавные, строчные буквы, цифры и
+    специальные символы.
+  </p>
+  <button
+    tuiButton
+    type="submit"
+    class="tui-space_right-3 tui-space_bottom-3 register__button"
+    [disabled]="this.loginForm.invalid || this.loginForm.disabled"
+  >
+    Войти
+  </button>
+  <div class="login__help">
+    Ещё не зарегистрированы? Нажмите <a routerLink="/register">сюда</a>
+  </div>
+</form>

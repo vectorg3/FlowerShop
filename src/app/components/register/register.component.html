@@ -1,0 +1,83 @@
+<button class="back" routerLink="/store">Вернуться в магазин...</button>
+<form class="register" [formGroup]="regForm" (ngSubmit)="submitRegister()">
+  <div class="register__title">Регистрация</div>
+  <div *ngIf="isErrorDisplay" class="request-error">
+    {{ requestError }}
+    <tui-svg
+      src="tuiIconClose"
+      class="error-close"
+      (click)="this.isErrorDisplay = false"
+      >close</tui-svg
+    >
+  </div>
+  <tui-input formControlName="name">
+    Как вас зовут?
+    <input tuiTextfield type="text" />
+  </tui-input>
+  <p
+    [class]="
+      this.regForm.get('name')?.invalid && this.regForm.get('name')?.touched
+        ? 'input-warning shown'
+        : 'input-warning'
+    "
+  >
+    Укажите имя
+  </p>
+  <tui-input formControlName="phone">
+    Введите номер телефона
+    <input tuiTextfield type="phone" />
+  </tui-input>
+  <p
+    [class]="
+      this.regForm.get('phone')?.invalid && this.regForm.get('phone')?.touched
+        ? 'input-warning shown'
+        : 'input-warning'
+    "
+  >
+    Номер телефона указан неверно
+  </p>
+  <tui-input formControlName="password">
+    Введите пароль
+    <input tuiTextfield type="password" />
+  </tui-input>
+  <p
+    [class]="
+      this.regForm.get('password')?.invalid &&
+      this.regForm.get('password')?.touched
+        ? 'input-warning shown'
+        : 'input-warning'
+    "
+  >
+    8 символов, включая (латинские) заглавные, строчные буквы, цифры и
+    специальные символы.
+  </p>
+  <tui-input formControlName="repeatPassword">
+    Повторите пароль
+    <input tuiTextfield type="password" />
+  </tui-input>
+  <p
+    [class]="
+      this.regForm.value.password !== this.regForm.value.repeatPassword &&
+      this.regForm.get('repeatPassword')?.touched
+        ? 'input-warning shown'
+        : 'input-warning'
+    "
+  >
+    Пароли должны совпадать
+  </p>
+  <button
+    tuiButton
+    type="submit"
+    class="tui-space_right-3 tui-space_bottom-3 register__button"
+    [disabled]="
+      this.regForm.invalid ||
+      this.regForm.disabled ||
+      this.regForm.value.password !== this.regForm.value.repeatPassword
+    "
+  >
+    Зарегистрироваться
+  </button>
+  <div class="register__help">
+    Уже есть аккаунт? Нажмите <a routerLink="/login">сюда</a>
+  </div>
+</form>

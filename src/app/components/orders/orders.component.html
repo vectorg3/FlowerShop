@@ -1,0 +1,34 @@
+<app-preloader *ngIf="isLoading"></app-preloader>
+<div class="orders" *ngIf="!isLoading">
+  <div class="orders__title">Заказы</div>
+  <ul class="orders__list">
+    <li class="orders__item" *ngFor="let item of orders">
+      <div class="orders__header">
+        <div class="orders__id">Заказ #{{ item._id!.substr(21) }}</div>
+        <div class="orders__date">{{ item.date | date : "short" }}</div>
+      </div>
+      <tui-scrollbar class="products__list">
+        <div class="products__item" *ngFor="let product of item.orderList">
+          <img class="products__image" [src]="product.image" />
+          <div class="products__info">
+            <div class="products__name">{{ product.name }}</div>
+            <div class="products__description">
+              {{ product.description }}
+            </div>
+            <div class="products__price">
+              {{ product.price | currency : "₽ " }}
+            </div>
+          </div>
+        </div>
+      </tui-scrollbar>
+      <div class="orders__info">
+        <div class="orders__totalPrice">
+          {{ item.totalPrice | currency : "₽ " }}
+        </div>
+        <div class="orders__status">
+          Статус: <span>{{ item.status }}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
