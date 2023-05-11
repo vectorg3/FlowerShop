@@ -1,26 +1,45 @@
-<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''" *ngIf="showMenu">
+<button class="menuBtn" (click)="toggleCollapse()" *ngIf="showMenu">
+  <tui-svg
+    src="tuiIconMenu"
+    class="sidenav-link-icon"
+    style="font-size: 34px; margin-bottom: 0.3rem"
+  ></tui-svg>
+</button>
+<div
+  class="sidenav"
+  [ngClass]="collapsed ? 'sidenav-collapsed' : ''"
+  *ngIf="showMenu"
+>
   <div class="logo-container">
-    <button class="logo" (click)="toggleCollapse()">F</button>
-    <div class="logo-text" *ngIf="collapsed">FlowerShop</div>
-    <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()"><tui-svg src="tuiIconCloseLarge" class="close-icon"></tui-svg></button>
+    <button class="logo" (click)="toggleCollapse()">
+      <tui-svg
+        src="tuiIconMenu"
+        class="sidenav-link-icon"
+        style="font-size: 32px; margin-bottom: 0.3rem"
+      ></tui-svg>
+    </button>
+    <div class="logo-text">FlowerShop</div>
+    <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
+      <tui-svg src="tuiIconCloseLarge" class="close-icon"></tui-svg>
+    </button>
   </div>
   <ul class="sidenav-nav">
     <li class="sidenav-nav-item" *ngFor="let item of navData">
-      <a class="sidenav-nav-link" [routerLink]="[item.routerLink]">
+      <a class="sidenav-nav-link" [routerLink]="[item.routerLink]" (click)="toggleCollapse()">
         <tui-svg [src]="item.icon" class="sidenav-link-icon"></tui-svg>
-        <span class="sidenav-link-text" *ngIf="collapsed">{{item.label}}</span>
+        <span class="sidenav-link-text">{{ item.label }}</span>
       </a>
     </li>
     <li class="sidenav-nav-item" *ngIf="isLoggedIn">
       <a class="sidenav-nav-link" (click)="logout()">
         <tui-svg src="tuiIconLogOut" class="sidenav-link-icon"></tui-svg>
-        <span class="sidenav-link-text" >Выход</span>
+        <span class="sidenav-link-text">Выход</span>
       </a>
     </li>
     <li class="sidenav-nav-item" *ngIf="!isLoggedIn">
       <a class="sidenav-nav-link" routerLink="/login">
         <tui-svg src="tuiIconLogIn" class="sidenav-link-icon"></tui-svg>
-        <span class="sidenav-link-text" >Войти</span>
+        <span class="sidenav-link-text">Войти</span>
       </a>
     </li>
   </ul>

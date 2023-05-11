@@ -1,6 +1,7 @@
 <app-preloader *ngIf="isLoading"></app-preloader>
 <div class="orders" *ngIf="!isLoading">
   <div class="orders__title">Заказы</div>
+  <div class="no__orders" *ngIf="!isLoading || orders.length !== 0">У вас пока нет заказов</div>
   <ul class="orders__list">
     <li class="orders__item" *ngFor="let item of orders">
       <div class="orders__header">

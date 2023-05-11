@@ -19,21 +19,21 @@ export class LoginComponent {
     this.loginForm = new FormGroup({
       password: new FormControl('', [
         Validators.required,
-        Validators.pattern(
-          '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&].{8,}'
-        ),
+        Validators.minLength(8),
       ]),
       phone: new FormControl('', [
         Validators.required,
-        Validators.pattern(/(\+7|8)[- _]*\(?[- _]*(\d{3}[- _]*\)?([- _]*\d){7}|\d\d[- _]*\d\d[- _]*\)?([- _]*\d){6})/g),
+        Validators.pattern(
+          /(\+7|8)[- _]*\(?[- _]*(\d{3}[- _]*\)?([- _]*\d){7}|\d\d[- _]*\d\d[- _]*\)?([- _]*\d){6})/g
+        ),
       ]),
     });
   }
-  submitLogin(){
-    this.loginForm.disable()
+  submitLogin() {
+    this.loginForm.disable();
     this.aSub = this.auth.login(this.loginForm.value).subscribe({
       next: () => {
-        this.router.navigate(['/store'])
+        this.router.navigate(['/store']);
       },
       error: (error) => {
         this.isErrorDisplay = true;
@@ -41,7 +41,7 @@ export class LoginComponent {
         console.warn(error);
         this.loginForm.enable();
       },
-    })
+    });
   }
   ngOnDestroy(): void {
     if (this.aSub) {
