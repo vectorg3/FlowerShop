@@ -34,6 +34,7 @@ import { PreloaderComponent } from './components/ui/preloader/preloader.componen
 import { CartComponent } from './components/cart/cart.component';
 import { TuiCardModule, TuiInputCVCModule, TuiInputCardModule, TuiInputExpireModule } from '@taiga-ui/addon-commerce';
 import { OrdersComponent } from './components/orders/orders.component';
+import { DetailsComponent } from './components/store/details/details.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     PreloaderComponent,
     CartComponent,
     OrdersComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

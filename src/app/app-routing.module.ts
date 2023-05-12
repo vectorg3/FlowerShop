@@ -6,11 +6,16 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './classes/auth.guard';
 import { CartComponent } from './components/cart/cart.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { DetailsComponent } from './components/store/details/details.component';
 
 const routes: Routes = [
   {
     path: 'store',
     component: StoreComponent,
+  },
+  {
+    path: 'store/:id',
+    component: DetailsComponent,
   },
   {
     path: 'cart',
