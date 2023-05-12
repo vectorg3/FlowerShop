@@ -122,11 +122,11 @@
     }
   }
 }
-@media(max-width: 479px){
+@media(max-width: 499px){
   .orders{
     padding: 1rem;
     &__item{
-      width: 70%;
+      width: 100%;
     }
     &__totalPrice, &__status{
       font-size: 18px;
