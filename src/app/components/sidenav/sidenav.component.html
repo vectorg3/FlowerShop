@@ -25,7 +25,7 @@
   </div>
   <ul class="sidenav-nav">
     <li class="sidenav-nav-item" *ngFor="let item of navData">
-      <a class="sidenav-nav-link" [routerLink]="[item.routerLink]" (click)="toggleCollapse()">
+      <a class="sidenav-nav-link" [routerLink]="[item.routerLink]" (click)="closeSidenav()">
         <tui-svg [src]="item.icon" class="sidenav-link-icon"></tui-svg>
         <span class="sidenav-link-text">{{ item.label }}</span>
       </a>
