@@ -14,21 +14,4 @@ export class StoreService {
     return this.http.get<IProduct[]>('https://flowershop-v2n3.onrender.com/products')
   }
 
-  addToCart(product: IProduct){
-    return this.http.post('https://flowershop-v2n3.onrender.com/cart', product)
-  }
-  getCart(): Observable<IProduct[]>{
-    return this.http.get<IProduct[]>('https://flowershop-v2n3.onrender.com/cart')
-  }
-  removeFromCart(id: string){
-    return this.http.delete(`https://flowershop-v2n3.onrender.com/cart/${id}`)
-  }
-
-  getOrders(): Observable<IOrder[]>{
-    return this.http.get<IOrder[]>('https://flowershop-v2n3.onrender.com/orders')
-  }
-  createOrder(order: IOrder){
-    return this.http.post('https://flowershop-v2n3.onrender.com/orders', order);
-  }
-
 }

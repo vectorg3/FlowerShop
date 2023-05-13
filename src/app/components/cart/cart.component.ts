@@ -9,6 +9,8 @@ import {
   tuiCardExpireValidator,
   tuiCardNumberValidator,
 } from '@taiga-ui/addon-commerce';
+import { CartService } from 'src/app/services/cart.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-cart',
@@ -27,7 +29,7 @@ export class CartComponent {
     cvc: new FormControl(''),
   });
 
-  constructor(private service: StoreService) {}
+  constructor(private CartService: CartService, private OrderService: OrderService) {}
   get card(): string | null {
     const value: string | null | undefined = this.form.get('card')?.value;
 
@@ -54,7 +56,7 @@ export class CartComponent {
     }
   }
   loadCart() {
-    this.service.getCart().subscribe({
+    this.CartService.getCart().subscribe({
       next: (res) => {
         this.totalPrice = 0;
         this.cart = res;
@@ -69,7 +71,7 @@ export class CartComponent {
     });
   }
   removeFromCart(id: string) {
-    this.service.removeFromCart(id).subscribe({
+    this.CartService.removeFromCart(id).subscribe({
       next: () => {
         Toast.fire({
           icon: 'success',
@@ -102,7 +104,7 @@ export class CartComponent {
       }
       this.order.orderList = this.cart;
       this.order.totalPrice = this.totalPrice;
-      this.service.createOrder(this.order).subscribe({
+      this.OrderService.createOrder(this.order).subscribe({
         next: () => {
           Swal.fire({
             icon: 'success',

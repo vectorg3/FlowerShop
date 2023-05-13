@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IOrder } from 'src/app/models/ORDER';
+import { OrderService } from 'src/app/services/order.service';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -10,10 +11,10 @@ import { StoreService } from 'src/app/services/store.service';
 export class OrdersComponent {
   orders: IOrder[];
   isLoading = true;
-  constructor(private service: StoreService) {
+  constructor(private OrderService: OrderService) {
   }
   loadOrders() {
-    this.service.getOrders().subscribe({
+    this.OrderService.getOrders().subscribe({
       next: (res) => {
         this.orders = res;
         this.isLoading = false;
