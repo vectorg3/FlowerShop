@@ -1,0 +1,14 @@
+<form [formGroup]="testForm">
+  <div tuiGroup class="group" [collapsed]="true">
+    <tui-radio-block
+      *ngFor="let fruit of fruits"
+      formControlName="testValue"
+      contentAlign="right"
+      size="l"
+      [item]="fruit"
+      [hideRadio]="true"
+    >
+      {{ fruit }}
+    </tui-radio-block>
+  </div>
+</form>

@@ -1,31 +1,38 @@
 <app-preloader *ngIf="isLoading"></app-preloader>
 <div class="store" *ngIf="!isLoading">
-  <div class="product" *ngFor="let item of this.products">
-    <div class="product__container">
-      <img class="product__image" [src]="item.image" alt="" />
-      <div class="product__info">
-        <div class="product__price">
-          <div class="product__price-title">ЦЕНА</div>
-          {{ item.price | currency : "₽ " }}
+  <app-sort></app-sort>
+  <div class="products">
+    <div class="product" *ngFor="let item of this.products">
+      <div class="product__container">
+        <img class="product__image" [src]="item.image" alt="" />
+        <div class="product__info">
+          <div class="product__price">
+            <div class="product__price-title">ЦЕНА</div>
+            {{ item.price | currency : "₽ " }}
+          </div>
+          <div class="product__category">
+            <div class="product__category-title">КАТЕГОРИЯ</div>
+            {{ item.category }}
+          </div>
+          <tui-rating
+            class="product__rating"
+            [readOnly]="true"
+            [(ngModel)]="item.rating"
+          ></tui-rating>
+          <div class="product__name">
+            {{ item.name }}
+          </div>
+          <div class="product__description">
+            {{ item.description }}
+          </div>
+          <button
+            type="button"
+            class="product__buyBtn"
+            (click)="addToCart(item)"
+          >
+            В корзину
+          </button>
         </div>
-        <div class="product__category">
-          <div class="product__category-title">КАТЕГОРИЯ</div>
-          {{ item.category }}
-        </div>
-        <tui-rating
-          class="product__rating"
-          [readOnly]="true"
-          [(ngModel)]="item.rating"
-        ></tui-rating>
-        <div class="product__name">
-          {{ item.name }}
-        </div>
-        <div class="product__description">
-          {{ item.description }}
-        </div>
-        <button type="button" class="product__buyBtn" (click)="addToCart(item)">
-          В корзину
-        </button>
       </div>
     </div>
   </div>

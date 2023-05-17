@@ -24,6 +24,8 @@ import {
   TuiInputComponent,
   TuiInputModule,
   TuiIslandModule,
+  TuiRadioBlockModule,
+  TuiRadioModule,
   TuiRatingModule,
 } from '@taiga-ui/kit';
 import { FormsModule } from '@angular/forms';
@@ -35,6 +37,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { TuiCardModule, TuiInputCVCModule, TuiInputCardModule, TuiInputExpireModule } from '@taiga-ui/addon-commerce';
 import { OrdersComponent } from './components/orders/orders.component';
 import { DetailsComponent } from './components/store/details/details.component';
+import { SortComponent } from './components/store/sort/sort.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,7 @@ import { DetailsComponent } from './components/store/details/details.component';
     CartComponent,
     OrdersComponent,
     DetailsComponent,
+    SortComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +73,9 @@ import { DetailsComponent } from './components/store/details/details.component';
     TuiInputExpireModule,
     TuiInputCVCModule,
     TuiGroupModule,
-    TuiScrollbarModule
+    TuiScrollbarModule,
+    TuiRadioModule,
+    TuiRadioBlockModule
   ],
   providers: [
     { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
