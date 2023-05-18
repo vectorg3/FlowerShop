@@ -1,6 +1,6 @@
 <app-preloader *ngIf="isLoading"></app-preloader>
 <div class="store" *ngIf="!isLoading">
-  <app-sort></app-sort>
+  <app-sort (onSort)="sortProducts($event)"></app-sort>
   <div class="products">
     <div class="product" *ngFor="let item of this.products">
       <div class="product__container">

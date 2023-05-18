@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -8,8 +8,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class SortComponent {
   readonly testForm = new FormGroup({
-    testValue: new FormControl('orange'),
+    testValue: new FormControl(''),
   });
-
-  readonly fruits = ['apple', 'orange', 'pineapple'];
+  readonly fruits = ['Рейтинг', 'Цена', 'Название'];
+  @Output() onSort = new EventEmitter();
+  onSortClick() {
+    this.onSort.emit(this.testForm.value.testValue);
+  }
 }
