@@ -8,10 +8,11 @@ import { IOrder } from '../models/ORDER';
   providedIn: 'root'
 })
 export class StoreService {
+  private url: string = 'https://flowerShop-v2n3.onrender.com';
 
   constructor(private http: HttpClient) { }
   getProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>('https://flowershop-v2n3.onrender.com/products')
+    return this.http.get<IProduct[]>(`${this.url}/products`)
   }
 
 }

@@ -11,7 +11,7 @@ interface SideNavToggle {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'FlowerShop';
+  title = 'WebShop';
   isSideNavCollapsed = false;
   screenWidth = 0;
   showSideBar = true;

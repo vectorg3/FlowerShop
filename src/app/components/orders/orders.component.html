@@ -17,14 +17,14 @@
               {{ product.description }}
             </div>
             <div class="products__price">
-              {{ product.price | currency : "₽ " }}
+              {{ product.price | currency : "$ " }}
             </div>
           </div>
         </div>
       </tui-scrollbar>
       <div class="orders__info">
         <div class="orders__totalPrice">
-          {{ item.totalPrice | currency : "₽ " }}
+          {{ item.totalPrice | currency : "$ " }}
         </div>
         <div class="orders__status">
           Статус: <span>{{ item.status }}</span>

@@ -8,7 +8,7 @@
         <div class="product__info">
           <div class="product__price">
             <div class="product__price-title">ЦЕНА</div>
-            {{ item.price | currency : "₽ " }}
+            {{ item.price | currency : "$ " }}
           </div>
           <div class="product__category">
             <div class="product__category-title">КАТЕГОРИЯ</div>
@@ -23,7 +23,7 @@
             {{ item.name }}
           </div>
           <div class="product__description">
-            {{ item.description }}
+            {{ (item.description.length>40)? (item.description | slice:0:40)+'...':(item.description) }}
           </div>
           <button
             type="button"

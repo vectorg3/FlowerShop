@@ -7,16 +7,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
+  private url: string = 'https://flowerShop-v2n3.onrender.com';
   constructor(private http: HttpClient) {}
   addToCart(product: IProduct) {
-    return this.http.post('https://flowershop-v2n3.onrender.com/cart', product);
+    return this.http.post(`${this.url}/cart`, product);
   }
   getCart(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(
-      'https://flowershop-v2n3.onrender.com/cart'
+      `${this.url}/cart`
     );
   }
   removeFromCart(id: string) {
-    return this.http.delete(`https://flowershop-v2n3.onrender.com/cart/${id}`);
+    return this.http.delete(`${this.url}/cart/${id}`);
   }
 }

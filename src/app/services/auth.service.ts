@@ -9,11 +9,12 @@ import { IUser } from 'src/app/models/user';
 })
 export class AuthService {
   user: any;
+  private url: string = 'https://flowerShop-v2n3.onrender.com';
   helper = new JwtHelperService();
   constructor(private http: HttpClient) {}
   register(user: IUser): Observable<{ token: string }> {
     return this.http
-      .post<{ token: string }>('https://flowershop-v2n3.onrender.com/auth/register', user)
+      .post<{ token: string }>(`${this.url}/auth/register`, user)
       .pipe(
         tap((user) => {
           localStorage.setItem('token', user.token);
@@ -22,7 +23,7 @@ export class AuthService {
   }
   login(user: IUser): Observable<{ token: string }> {
     return this.http
-      .post<{ token: string }>('https://flowershop-v2n3.onrender.com/auth/login', user)
+      .post<{ token: string }>(`${this.url}/auth/login`, user)
       .pipe(
         tap((user) => {
           localStorage.setItem('token', user.token);
@@ -36,7 +37,7 @@ export class AuthService {
     return localStorage.getItem('token');
   }
   getMe(): any {
-    return this.http.get('https://flowershop-v2n3.onrender.com/auth/me').pipe(
+    return this.http.get(`${this.url}/auth/me`).pipe(
       tap((user) => {
         this.user = user;
       })

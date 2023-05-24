@@ -8,14 +8,14 @@
         <div class="product__name">
           {{ item.name }}
         </div>
-        <div class="product__price">{{ item.price | currency : "₽ " }}</div>
+        <div class="product__price">{{ item.price | currency : "$ " }}</div>
       </div>
       <div class="remove__btn" (click)="removeFromCart(item._id)">
         <tui-svg src="tuiIconCloseLarge" class="close-icon"></tui-svg>
       </div>
     </div>
     <div class="cart__totalPrice">
-      Итого: {{ totalPrice | currency : "₽ " }}
+      Итого: {{ totalPrice | currency : "$ " }}
     </div>
   </div>
 

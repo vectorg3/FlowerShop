@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OrderService {
-
+  private url: string = 'https://flowerShop-v2n3.onrender.com';
   constructor(private http: HttpClient) { }
   getOrders(): Observable<IOrder[]>{
-    return this.http.get<IOrder[]>('https://flowershop-v2n3.onrender.com/orders')
+    return this.http.get<IOrder[]>(`${this.url}/orders`)
   }
   createOrder(order: IOrder){
-    return this.http.post('https://flowershop-v2n3.onrender.com/orders', order);
+    return this.http.post(`${this.url}/orders`, order);
   }
 }
