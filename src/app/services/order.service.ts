@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OrderService {
-  private url: string = 'https://flowerShop-v2n3.onrender.com';
+  private url: string = 'https://webshop-server-r0tu.onrender.com';
   constructor(private http: HttpClient) { }
   getOrders(): Observable<IOrder[]>{
     return this.http.get<IOrder[]>(`${this.url}/orders`)

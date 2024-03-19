@@ -9,7 +9,7 @@ import { IUser } from 'src/app/models/user';
 })
 export class AuthService {
   user: any;
-  private url: string = 'https://flowerShop-v2n3.onrender.com';
+  private url: string = 'https://webshop-server-r0tu.onrender.com';
   helper = new JwtHelperService();
   constructor(private http: HttpClient) {}
   register(user: IUser): Observable<{ token: string }> {

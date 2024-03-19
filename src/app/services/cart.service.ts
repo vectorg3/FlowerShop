@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
-  private url: string = 'https://flowerShop-v2n3.onrender.com';
+  private url: string = 'https://webshop-server-r0tu.onrender.com';
   constructor(private http: HttpClient) {}
   addToCart(product: IProduct) {
     return this.http.post(`${this.url}/cart`, product);

@@ -8,7 +8,7 @@ import { IOrder } from '../models/ORDER';
   providedIn: 'root'
 })
 export class StoreService {
-  private url: string = 'https://flowerShop-v2n3.onrender.com';
+  private url: string = 'https://webshop-server-r0tu.onrender.com';
 
   constructor(private http: HttpClient) { }
   getProducts(): Observable<IProduct[]> {
